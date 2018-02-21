@@ -1,0 +1,50 @@
+.inline {
+    display: inline-block;
+    vertical-align: top;
+}
+.col1 {
+    width: 150px;
+}
+p{
+    margin: 5px;
+}
+.col3 {
+    width: 350px;
+}
+.row {
+    padding: 5px;
+    border: 1px solid black;
+}
+.header {
+    padding: 5px;
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+.show {
+    width: 600px;
+    margin-top: 15px;
+}
+.btn {
+    width: 100px;
+    height: 20px;
+    margin-left: 5px;
+}
+.green {
+    background-color: green;
+    color: white;
+}
+.red {
+    background-color: red;
+    color: white;
+}
+.yellow {
+    background-color: yellow;
+    color: black;
+}
+.panel {
+    text-align: center;
+}
+.largefont {
+    font-size: 24px;
+    margin: 20px;
+}

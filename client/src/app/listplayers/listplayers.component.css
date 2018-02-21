@@ -1,0 +1,36 @@
+.inline {
+    display: inline-block;
+    vertical-align: top;
+}
+.col1 {
+    width: 150px;
+}
+p{
+    margin: 5px;
+}
+.col2 {
+    width: 350px;
+}
+.row {
+    padding: 5px;
+    border: 1px solid black;
+}
+.header {
+    padding: 5px;
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+.show {
+    width: 600px;
+}
+.btn {
+    width: 100px;
+    height: 25px;
+    background-color: green;
+    margin-left: 5px;
+    color: white;
+}
+.largefont {
+    font-size: 24px;
+    margin: 20px;
+}

@@ -1,0 +1,33 @@
+<div>
+  <div>
+    <h1> Player Status - {{ game }} </h1>
+    <p  class='panel largefont'><a class='largefont' [routerLink]="['/status/game/', '1']">Game 1</a> | 
+      <a class='largefont' [routerLink]="['/status/game/', '2']">Game 2</a> | 
+      <a class='largefont' [routerLink]="['/status/game/', '3']">Game 3</a> 
+    </p>
+  </div>
+  <div *ngIf="(roster.length !=0)" class='show'>
+    <div class='header'>
+      <p class='col1 inline'>Player Name </p>
+      <p class='col3 inline'>Actions</p>
+    </div>
+    <div *ngFor="let player of roster" class='row'>
+      <p class='col1 inline'>{{ player.name }} </p>
+      <p class='col3 inline' *ngIf="player.status == 'Playing'">  
+         <button class='inline btn green' value="{{ player.id }}" name='id'>Playing</button>
+         <button class='inline btn' (click)='updPlayerStatus($event, 2)' value="{{ player.id }}" name='id'>Not Playing</button>
+         <button class='inline btn' (click)='updPlayerStatus($event, 3)' value="{{ player.id }}" name='id'>Undecided</button>
+      </p>
+      <p class='col3 inline' *ngIf="player.status == 'Not Playing'">  
+        <button class='inline btn' (click)='updPlayerStatus($event, 1)' value="{{ player.id }}" name='id'>Playing</button>
+        <button class='inline btn red' value="{{ player.id }}" name='id'>Not Playing</button>
+        <button class='inline btn' (click)='updPlayerStatus($event, 3)' value="{{ player.id }}" name='id'>Undecided</button>
+     </p>
+     <p class='col3 inline' *ngIf="player.status == 'Undecided'">  
+      <button class='inline btn' (click)='updPlayerStatus($event, 1)' value="{{ player.id }}" name='id'>Playing</button>
+      <button class='inline btn' (click)='updPlayerStatus($event, 2)' value="{{ player.id }}" name='id'>Not Playing</button>
+      <button class='inline btn yellow' value="{{ player.id }}" name='id'>Undecided</button>
+   </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div>
+  <p><a class='largefont' [routerLink]="['/players/list']">List</a> |
+    <a class='largefont' [routerLink]="['/players/addplayer']">Add a player</a>
+  </p>
+  <div *ngIf="players.length !=0" class='show'>
+    <div class='header'>
+      <p class='col1 inline'>Player Name </p>
+      <p class='col1 inline'>Preferred Position</p>
+      <p class='col1 inline'>Actions</p>
+    </div>
+    <div *ngFor="let player of players" class='row'>
+      <p class='col1 inline'>{{ player.name }} </p>
+      <p class='col1 inline'>{{ player.position }} </p>
+      <p class='col1 inline'>  
+         <button class='inline btn' (click)='deletePlayer($event)' value="{{ player._id }}" name='id'>Delete</button>
+      </p>
+    </div>
+  </div>
+</div>

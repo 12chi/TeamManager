@@ -1,0 +1,16 @@
+<div>
+  <p><a class='largefont' [routerLink]="['/players/list']">List</a> |
+    <a class='largefont' [routerLink]="['/players/addplayer']">Add a player</a>
+  </p>
+  <div class='main'>
+    <h3>Add Player </h3>
+    <div class='displ'>
+      <form (submit)="createPlayer()">
+        <p class=''> Name: <input type='text' name="newPlayer.name" [(ngModel)]="newPlayer.name"></p>
+        <p class='smallfont'>*Name must be at least 2 characters in length </p>
+        <p class=''> Preferred Position: <input type='text' name="newPlayer.position" [(ngModel)]="newPlayer.position"></p>
+        <input type='submit' class='btn inline' value='Add' />
+      </form> 
+    </div>
+  </div>
+</div>
