@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listplayers',
@@ -10,7 +11,8 @@ export class ListplayersComponent implements OnInit {
   players = [];
   playerId = "";
 
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService,
+        private _router: Router) { }
 
   ngOnInit() {
     this.getAllPlayers()
@@ -26,18 +28,23 @@ export class ListplayersComponent implements OnInit {
   }
 
   deletePlayer(event): void {
-    this.playerId = event.target.value;
-    console.log("Deleting: ", this.playerId)
-    let Obs = this._httpService.deletePlayer(this.playerId);
-    Obs.subscribe(data => {
-    if (data['message'] == 'Success') {
-      console.log("Successfully deleted Player", this.playerId);
-      // delete from team
-      this._httpService.deletePlayerFromTeams(this.playerId)
-    } else {
-      console.log("Error: deleting Player", data['error']);
+    var conf = confirm("Are you sure you want to delete this player?");
+    if (conf) {
+      this.playerId = event.target.value;
+      console.log("Deleting: ", this.playerId)
+      let Obs = this._httpService.deletePlayer(this.playerId);
+      Obs.subscribe(data => {
+        if (data['message'] == 'Success') {
+          console.log("Successfully deleted Player", this.playerId);
+          // delete from team
+          this._httpService.deletePlayerFromTeams(this.playerId)
+        } else {
+          console.log("Error: deleting Player", data['error']);
+        }
+      });
+      // this.getAllPlayers();
     }
-    });
     this.getAllPlayers();
+    this._router.navigate(['/players/list']);
   }
 }
